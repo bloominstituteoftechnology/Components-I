@@ -39,9 +39,9 @@ const data = [
         mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma
         and Parvati Sorting Hat Minister of Magic blue turban remember my last.`,
 
-    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights
-        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven
-        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot
+    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
@@ -68,8 +68,8 @@ const data = [
         consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
 
-    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel
-        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
@@ -115,3 +115,47 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(obj){
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articlep1 = document.createElement("p");
+  const articlep2 = document.createElement("p");
+  const articlep3 = document.createElement("p");
+  const articlep4 = document.createElement("p");
+  const expandbtn = document.createElement("p");
+
+  article.appendChild(articleTitle);
+  article.appendChild(articlep1);
+  article.appendChild(articlep2);
+  article.appendChild(articlep3);
+  article.appendChild(articlep4);
+  article.appendChild(expandbtn);
+
+  article.classList.add("article");
+  articlep1.classList.add("date");
+  expandbtn.classList.add("expandButton");
+
+  articleTitle.textContent = obj.title;
+  articlep1.textContent = obj.date;
+  articlep2.textContent = obj.firstParagraph;
+  articlep3.textContent = obj.secondParagraph;
+  articlep4.textContent = obj.thirdParagraph;
+  expandbtn.textContent = "+";
+
+  expandbtn.addEventListener("click",() => {
+    article.classList.toggle("article-open");
+  });
+
+  return article;
+}
+
+const articles = document.querySelector(".articles");
+
+const articleElements = data.map(data => {
+  return articleMaker(data);
+})
+
+articleElements.forEach(elem => {
+  articles.appendChild(elem);
+})
