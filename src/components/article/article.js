@@ -1,4 +1,6 @@
 import './article.less'
+
+
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
@@ -87,8 +89,70 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },  {
+    title: 'James Robertson Just Might Have What it Takes to Become the Greatest Dev of All Time',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+
+function articleMaker (artObj){
+// instantiate elements for article
+const articleWrapper = document.createElement('div');
+const artTitle = document.createElement('h2');
+const artDate = document.createElement('p');
+const artFirstParagraph = document.createElement('p');
+const artSecondParagraph = document.createElement('p');
+const artThirdParagraph = document.createElement('p');
+const expandButton = document.createElement('span')
+
+// append elements to the article to structure it
+
+articleWrapper.appendChild(artTitle);
+articleWrapper.appendChild(artDate);
+articleWrapper.appendChild(artFirstParagraph);
+articleWrapper.appendChild(artSecondParagraph);
+articleWrapper.appendChild(artThirdParagraph);
+articleWrapper.appendChild(expandButton);
+
+// adding class names to elements
+articleWrapper.classList.add('article')
+artDate.classList.add('date')
+expandButton.classList.add('expandButton')
+
+// setting text content
+artTitle.textContent = artObj.title;
+artDate.textContent = artObj.date;
+artFirstParagraph.textContent = artObj.firstParagraph
+artSecondParagraph.textContent = artObj.secondParagraph
+artThirdParagraph.textContent = artObj.thirdParagraph
+expandButton.textContent = '+';
+// adding event listener
+expandButton.addEventListener('click', () =>{
+  articleWrapper.classList.toggle('article-open');
+})
+return articleWrapper
+}
+ data.forEach(article =>{
+   document.querySelector('div.articles').appendChild(articleMaker(article))
+ })
+
+// const articleWrapper = document.querySelector('div.articles');
+// const articleList = articleMaker(article);
+// articleWrapper.appendChild(articleList);
+
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
@@ -99,7 +163,7 @@ const data = [
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+    <p></p> <p></p> <p></p>
 
     <span class="expandButton">+</span>
   </div>
