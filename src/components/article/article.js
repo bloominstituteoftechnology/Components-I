@@ -87,21 +87,80 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Lost in the sauce',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
+
+function articleMaker(articleObj){
+  const articleWrapper = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleParagraphOne = document.createElement('p');
+  const articleParagraphTwo = document.createElement('p');
+  const articleParagraphThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  articleWrapper.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  articleWrapper.appendChild(articleTitle);
+  articleWrapper.appendChild(articleDate);
+  articleWrapper.appendChild(articleParagraphOne);
+  articleWrapper.appendChild(articleParagraphTwo);
+  articleWrapper.appendChild(articleParagraphThree);
+  articleWrapper.appendChild(expandButton);
+
+  articleTitle.textContent = articleObj.title;
+  articleDate.textContent = articleObj.date;
+  articleParagraphOne.textContent = articleObj.firstParagraph;
+  articleParagraphTwo.textContent = articleObj.secondParagraph;
+  articleParagraphThree.textContent = articleObj.thirdParagraph;
+  expandButton.textContent = '+';
+
+  expandButton.addEventListener('click', () => {
+    articleWrapper.classList.toggle('article-open');
+  })
+
+  return articleWrapper;
+}
+
+data.forEach(article =>{
+  document.querySelector('div.articles').appendChild(articleMaker(article));
+  /** EQUIVALENT
+   * const articleWrapper = document.querySelector('div.articles');
+   * const articleList = articleMaker(article);
+   * articleWrapper.appendChild(articleList);
+   */
+})
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
+  <div class="article"> // element 1
+    <h2>{title of the article}</h2> // element 2
+    <p class="date">{date of the article}</p> // element 3
 
-    {three separate paragraph elements}
+    {three separate paragraph elements} // element 4,5,6
 
-    <span class="expandButton">+</span>
+    <span class="expandButton">+</span> // element 7
   </div>
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
