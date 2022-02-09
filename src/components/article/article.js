@@ -87,6 +87,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Cupcakes Are Sweet',
+    date: 'March 9th, 2022',
+    firstParagraph: `Jelly beans donut marzipan jelly-o sesame snaps candy canes. Croissant cheesecake wafer lollipop jujubes I love fruitcake halvah liquorice. I love I love gingerbread fruitcake biscuit cake. Soufflé pudding halvah cookie muffin cake chupa chups I love chocolate cake. Jelly beans donut marzipan jelly-o sesame snaps candy canes. Croissant cheesecake wafer lollipop jujubes I love fruitcake halvah liquorice. I love I love gingerbread fruitcake biscuit cake. Soufflé pudding halvah cookie muffin cake chupa chups I love chocolate cake. `,
+  
+    secondParagraph: `Apple pie chocolate sesame snaps jujubes bear claw. Cake croissant liquorice icing chocolate cake. Candy bear claw topping apple pie halvah candy canes donut. Chupa chups cupcake jelly bear claw bonbon I love donut gummi bears. I love macaroon gummi bears jujubes donut dragée I love toffee dragée. Gummies chocolate bar candy canes macaroon chocolate sugar plum I love I love. Ice cream pastry croissant I love topping chocolate bar gummies tart. Apple pie chocolate sesame snaps jujubes bear claw. Cake croissant liquorice icing chocolate cake. Candy bear claw topping apple pie halvah candy canes donut. Chupa chups cupcake jelly bear claw bonbon I love donut gummi bears. I love macaroon gummi bears jujubes donut dragée I love toffee dragée. Gummies chocolate bar candy canes macaroon chocolate sugar plum I love I love. Ice cream pastry croissant I love topping chocolate bar gummies tart. `,
+  
+    thirdParagraph: `Gummies gummies dragée gummies tiramisu wafer sesame snaps I love lemon drops. Tiramisu brownie bear claw I love candy canes marzipan marzipan. I love sweet wafer tart jelly beans I love carrot cake apple pie cotton candy. Candy jujubes cookie cupcake ice cream chocolate. I love wafer chocolate bar pudding halvah danish biscuit. Caramels cotton candy powder jujubes marzipan chocolate bar sweet roll biscuit. Fruitcake gingerbread cotton candy donut gummi bears cake gummi bears lollipop. Jujubes gummies toffee I love I love tootsie roll powder. Sweet roll sesame snaps pastry dessert halvah pie. Cake brownie sesame snaps pastry cookie cheesecake soufflé. Gummies macaroon marshmallow bear claw jelly-o sesame snaps icing toffee. Jelly-o dragée marshmallow sweet roll sugar plum macaroon cupcake pie. Gingerbread oat cake chocolate cake biscuit cookie.Gummies gummies dragée gummies tiramisu wafer sesame snaps I love lemon drops. Tiramisu brownie bear claw I love candy canes marzipan marzipan. I love sweet wafer tart jelly beans I love carrot cake apple pie cotton candy. Candy jujubes cookie cupcake ice cream chocolate. I love wafer chocolate bar pudding halvah danish biscuits..`
   }
 ];
 
@@ -115,3 +124,46 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+
+
+function articleMaker(articleArr){
+  const articleDiv = Object.assign(document.createElement('div'), { className: 'article' })
+  const title = document.createElement('h2')
+  const date = Object.assign(document.createElement('p'), { className: 'date'})
+  const p1 = document.createElement('p')
+  const p2 = document.createElement('p')
+  const p3 = document.createElement('p')
+  const span = Object.assign(document.createElement('span'), { className: 'expandButton'})
+  //
+  
+  
+  articleDiv.appendChild(title)
+  articleDiv.appendChild(date)
+  articleDiv.appendChild(p1)
+  articleDiv.appendChild(p2)
+  articleDiv.appendChild(p3)
+  articleDiv.appendChild(span)
+
+  date.textContent = articleArr.date
+  title.textContent = articleArr.title
+  p1.textContent = articleArr.firstParagraph
+  p2.textContent = articleArr.secondParagraph
+  p3.textContent = articleArr.thirdParagraph
+  span.textContent = '+'
+  
+  
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open')
+  })
+
+  return articleDiv
+
+
+}
+
+data.forEach((article) => {
+  document.querySelector('div.articles').appendChild(articleMaker(article))
+})
+
+
