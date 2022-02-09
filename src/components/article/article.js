@@ -87,6 +87,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'The WorkPlace',
+    date: 'Jan 29, 2020',
+    firstParagraph:'boogalawoogala',
+    secondParagraph:'Did I scare you',
+    thirdParagraph:'oh.'
   }
 ];
 
@@ -115,3 +122,43 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(articleObj){
+  const articleContainer = document.createElement('div');
+  articleContainer.classList.add('article');
+
+  const articleTitle = document.createElement('h2');
+  articleContainer.appendChild(articleTitle);
+  articleTitle.textContent = articleObj.title;
+
+  const articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+  articleContainer.appendChild(articleDate);
+  articleDate.textContent = articleObj.date;
+
+  const paragraph1 = document.createElement('p');
+  articleContainer.appendChild(paragraph1);
+  paragraph1.textContent = articleObj.firstParagraph;
+
+  const paragraph2 = document.createElement('p');
+  articleContainer.appendChild(paragraph2);
+  paragraph2.textContent = articleObj.secondParagraph;
+
+  const paragraph3 = document.createElement('p');
+  articleContainer.appendChild(paragraph3);
+  paragraph3.textContent = articleObj.thirdParagraph;
+
+  const expandButton = document.createElement('span');
+  expandButton.classList.add('expandButton');
+  expandButton.textContent = '+';
+  articleContainer.appendChild(expandButton);
+
+  expandButton.addEventListener('click',event=>{
+    articleContainer.classList.toggle('article-open');
+  })
+  
+  return articleContainer;
+
+}
+data.forEach(element=>{
+  document.querySelector('div.articles').appendChild(articleMaker(element));
+})
