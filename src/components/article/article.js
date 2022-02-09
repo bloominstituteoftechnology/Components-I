@@ -90,6 +90,61 @@ const data = [
   }
 ];
 
+function articleMaker(articleObj){
+  const articleContainer = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleParagraphOne = document.createElement('p');
+  const articleParagraphTwo = document.createElement('p');
+  const articleParagraphThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+//   let myPara = getElementById('para');
+// myPara.classList.add('myClass');
+  articleContainer.classList.add('article');
+  articleTitle.classList.add('title');
+  articleDate.classList.add('date');
+
+
+//   const para = document.createElement("p");
+// const node = document.createTextNode("This is a paragraph.");
+
+// para.appendChild(node);
+// document.getElementById("myDIV").appendChild(para);
+
+  articleContainer.appendChild(articleTitle);
+  articleContainer.appendChild(articleDate);
+  articleContainer.appendChild(articleParagraphOne);
+  articleContainer.appendChild(articleParagraphTwo);
+  articleContainer.appendChild(articleParagraphThree);
+  articleContainer.appendChild(expandButton);
+
+  articleTitle.textContent = articleObj.title;
+  articleDate.textContent = articleObj.date;
+  articleParagraphOne.textContent = articleObj.paragraphOne;
+  articleParagraphTwo.textContent = articleObj.paragraphTwo;
+  articleParagraphThree.textContent = articleObj.paragraphThree;
+  expandButton.textContent = "+";
+
+
+  expandButton.addEventListener('click', () => {
+  articleContainer.classList.toggle('article-open');
+
+
+  })
+
+  return articleContainer;
+
+  } 
+
+
+  data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article));
+
+ })
+
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
