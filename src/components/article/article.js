@@ -87,7 +87,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {title: 'Hot Hot Lava Man!',
+  date: 'Jan 1st, 2019',
+  firstParagraph: `Lava Man Hot!`,
+
+  secondParagraph: `Lava Man Burn! `,
+
+  thirdParagraph: `Ouch!`}
 ];
 
 /*
