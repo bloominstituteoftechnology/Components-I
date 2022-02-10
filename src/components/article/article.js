@@ -90,6 +90,62 @@ const data = [
   }
 ];
 
+const articles= document.querySelector('.articles');
+
+function articleMaker (articleObj) {
+    const rootDiv= document.createElement('div');
+    const divTitle= document.createElement('h2');
+    const divDate= document.createElement('p');
+    const divParagraph1= document.createElement('p');
+    const divParagraph2= document.createElement('p');
+    const divParagraph3= document.createElement('p');
+    const divSpan= document.createElement('span');
+
+    rootDiv.appendChild(divTitle);
+    rootDiv.appendChild(divDate);
+    rootDiv.appendChild(divParagraph1);
+    rootDiv.appendChild(divParagraph2);
+    rootDiv.appendChild(divParagraph3);
+    rootDiv.appendChild(divSpan);
+
+    rootDiv.classList.add('article');
+    divDate.classList.add('date');
+    divSpan.classList.add('expandButton');
+    
+    divTitle.textContent= articleObj.title;
+    divDate.textContent= articleObj.date;
+    divParagraph1.textContent= articleObj.firstParagraph;
+    divParagraph2.textContent= articleObj.secondParagraph;
+    divParagraph3.textContent= articleObj.thirdParagraph;
+    divSpan.textContent= '+';
+    
+    divSpan.addEventListener('click', event => {
+      rootDiv.classList.toggle('article-open');
+    //   event.classList.toggle('article-close')
+    })
+    return rootDiv;
+}
+
+const personalInfo = {
+  title: 'My Mojo',
+  date: 'the 5th of Never',
+  firstParagraph: 'There was this one time that I ate a Sandwich in a single bite. Pretty crazy day, but you kind of had to be there...' ,
+  secondParagraph: 'And then I had this guy tell me that I deserved an award. I am just too humble for something like that so I decided it was time to go home and do my chores.',
+  thirdParagraph: 'Would you believe it? My mother had a cake for me. She had no reason,"I just felt like getting a cake to celebrate SOMETHING but I could not think of a good reason!" Fate was good to me that day.'
+}
+data.push(personalInfo);
+
+const divElements= data.map(articleObj => {
+        return articleMaker(articleObj);
+    })    
+
+divElements.forEach(articleObj => {
+    articles.appendChild(articleObj);
+})
+
+
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
