@@ -87,6 +87,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+      title: "Hi",
+      date: "1",
+      firstParagraph: "a",
+      secondParagraph: "b",
+      thirdParagraph: "c",
   }
 ];
 
@@ -115,3 +122,60 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker (data) {
+
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const artP1 = document.createElement('p');
+  const artP2 = document.createElement('p');
+  const artP3 = document.createElement('p');
+  const artButton = document.createElement('span');
+
+  article.appendChild(artTitle);
+  article.appendChild(artDate);
+  article.appendChild(artP1);
+  article.appendChild(artP2);
+  article.appendChild(artP3);
+  article.appendChild(artButton);
+
+  article.classList.add('article');
+  artDate.classList.add('date');
+  artButton.classList.add('expandButton');
+
+  artTitle.textContent = data.title;
+  artDate.textContent = data.date;
+  artP1.textContent = data.firstParagraph;
+  artP2.textContent = data.secondParagraph;
+  artP3.textContent = data.thirdParagraph;
+  artButton.textContent = '+'
+
+  artButton.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+
+  return article
+};
+
+const articles = document.querySelector('.articles');
+
+const artData = data.map(elem => {
+  return articleMaker(elem)
+});
+
+artData.forEach(elem => {
+  articles.appendChild(elem)
+});
+
+// const sample = articleMaker({
+//   title: "Hi",
+//   date: "1",
+//   firstParagraph: "a",
+//   secondParagraph: "b",
+//   thirdParagraph: "c",
+// })
+
+// articles.appendChild(sample)
+
+// console.log(sample)
