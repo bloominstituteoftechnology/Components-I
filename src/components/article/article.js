@@ -87,8 +87,55 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'A new article is born',
+    date: 'March 9, 2022',
+    firstParagraph: 'Paragraph number one, blah blah blah blah',
+    secondParagraph: 'Paragraph number two, blah blah blah blah',
+    thirdParagraph: 'Paragraph number three, blah blah blah blah'
   }
 ];
+
+
+function articleMaker(data){
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const buttonExpander = document.createElement('span');
+
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(paragraph1);
+  articleDiv.appendChild(paragraph2);
+  articleDiv.appendChild(paragraph3);
+  articleDiv.appendChild(buttonExpander);
+
+  articleDiv.classList.add('article');
+  buttonExpander.classList.add('expandButton');
+
+  articleTitle.textContent = data.title;
+  articleDate.textContent = data.date;
+  paragraph1.textContent = data.firstParagraph;
+  paragraph2.textContent = data.secondParagraph;
+  paragraph3.textContent = data.thirdParagraph;
+  buttonExpander.textContent = '+';
+
+  buttonExpander.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open')
+  })
+  
+  return articleDiv;
+}
+
+const articleHolder = document.querySelector('.articles');
+
+data.forEach(elem => articleHolder.appendChild(articleMaker(elem)));
+
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
