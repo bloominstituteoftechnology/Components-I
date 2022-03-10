@@ -87,20 +87,31 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'We out here',
+    date: 'March 3rd, 2021',
+    firstParagraph: 'We are most definitely out here.',
+    secondParagraph: 'Would like to reiterate that we are infact, out here.',
+    thirdParagraph: 'Cannot stress enough the significance of the fact that we are most definitely out here.'
   }
 ];
 
 /*
-  Step 1: Write a component called 'articleMaker' to create an article.
+  Step 1: Write a component(function) called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
+
+
 
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
     {three separate paragraph elements}
-
+    <p></p>
+    <p></p>
+    <p></p>
     <span class="expandButton">+</span>
   </div>
 
@@ -115,3 +126,57 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+
+
+
+function articleMaker(articleObj){
+  const articleWrapper = document.createElement("div");
+  const headerTwo = document.createElement("h2");
+  const date = document.createElement("p");
+  const pOne = document.createElement("p");
+  const pTwo = document.createElement("p");
+  const pThree = document.createElement("p");
+  const expandButton = document.createElement("span");
+
+
+
+  articleWrapper.appendChild(headerTwo);
+  articleWrapper.appendChild(date);
+  articleWrapper.appendChild(pOne);
+  articleWrapper.appendChild(pTwo);
+  articleWrapper.appendChild(pThree);
+  articleWrapper.appendChild(expandButton);
+  
+
+
+  articleWrapper.classList.add("article");
+  date.classList.add("date");
+  expandButton.classList.add("expandButton");
+  
+
+
+  headerTwo.textContent = articleObj.title;
+  date.textContent = articleObj.date;
+  pOne.textContent = articleObj.firstParagraph;
+  pTwo.textContent = articleObj.secondParagraph;
+  pThree.textContent = articleObj.thirdParagraph;
+  expandButton.textContent = "+";
+
+
+  expandButton.addEventListener("click", () =>{
+    articleWrapper.classList.toggle("article-open");
+  })
+
+
+  return articleObj;
+}
+
+
+data.forEach(article => {
+  const articleWrapper = document.querySelector('div.articles');
+  const articleList = articleMaker(article);
+  articleWrapper.appendChild(articleList);
+
+})
+
