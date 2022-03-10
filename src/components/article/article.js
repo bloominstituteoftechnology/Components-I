@@ -88,6 +88,7 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  
 ];
 
 /*
@@ -115,3 +116,50 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+let crea = document.querySelector(".articles")
+
+function articleMaker(artObj) {
+  let conta = document.createElement("div")
+  conta.className = "article"
+  
+  let titelo = document.createElement("h2")
+  titelo.textContent = artObj.title
+
+  let etad = document.createElement("p")
+  etad.className = "date"
+  etad.textContent = artObj.date
+
+  let paone = document.createElement("p")
+  let patoo = document.createElement("p")
+  let pathrey = document.createElement("p")
+
+  paone.textContent = artObj.firstParagraph
+  patoo.textContent = artObj.secondParagraph
+  pathrey.textContent = artObj.thirdParagraph
+
+  let spani = document.createElement("span")
+  spani.className = "expandButton"
+  spani.textContent = "+"
+
+
+  crea.appendChild(conta)
+  conta.appendChild(titelo)
+  conta.appendChild(etad)
+  conta.appendChild(paone)
+  conta.appendChild(patoo)
+  conta.appendChild(pathrey)
+  conta.appendChild(spani)
+
+  function x() {
+    conta.classList.toggle("article-open")
+  }
+
+  spani.addEventListener("click", x)
+
+  return crea
+}
+
+data.forEach(x => {
+  articleMaker(x)
+})
