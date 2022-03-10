@@ -103,7 +103,51 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
+*/
+function articleMaker(data) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const expandButton = document.createElement('span');
 
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(paragraph1);
+  article.appendChild(paragraph2);
+  article.appendChild(paragraph3);
+  article.appendChild(expandButton);
+
+  articleTitle.textContent = data.title;
+  articleDate.textContent = data.date;
+  paragraph1.textContent = data.firstParagraph;
+  paragraph2.textContent = data.secondParagraph;
+  paragraph3.textContent = data.thirdParagraph;
+  expandButton.textContent = 'show/hide';
+  
+  
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  
+  return article;
+}
+
+const articles = data.map(elem => {
+  return articleMaker(elem);
+})
+
+articles.forEach(elem => {
+  document.querySelector('.articles').appendChild(elem);
+})
+/*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -115,3 +159,6 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const newArticle = articleMaker({title: 'Hello There', date: 'Dec 9th, 1980', firstParagraph: 'This is a story all about how my life got flip-turned upside down', secondParagraph: 'so Id like to take a minute just sitting right there', thirdParagraph: 'to tell you how I became the prince of a little town called Belle Air'})
+
+document.querySelector('.articles').appendChild(newArticle);
