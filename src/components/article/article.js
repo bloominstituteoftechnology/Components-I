@@ -115,3 +115,55 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const articles = document.querySelector(".articles");
+
+function articleMaker(articleObj){
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("h2");
+  const articleP1 = document.createElement("p");
+  const articleP2 = document.createElement("p");
+  const articleP3 = document.createElement("p");
+  const expandButton = document.createElement("span");
+  const openButton = document.createElement("button");
+  const closeButton = document.createElement("button");
+
+
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(expandButton);
+  expandButton.appendChild(openButton);
+  expandButton.appendChild(closeButton);
+
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  expandButton.classList.add("expand-button");
+  openButton.classList.add("article-open");
+  closeButton.classList.add("close");
+
+
+  articleTitle.textContent = articleObj.title;
+  articleDate.textContent = articleObj.date;
+  
+  openButton.textContent = open;
+  closeButton.textContent = close;
+  
+  expandButton.addEventListener("click", () => {
+    openButton.classList.toggle("article-open");
+    closeButton.classList.toggle("close");
+    expandButton.classList.toggle("expand-button");
+  })
+  
+  return article;
+
+
+}
+
+
+const testArticle = articleMaker({ title: "test", date: "date"});
+
+articles.appendChild(testArticle);
