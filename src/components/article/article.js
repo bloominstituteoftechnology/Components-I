@@ -73,7 +73,7 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
+    title: 'Conor Is a G',
     date: 'Jan 1st, 2019',
     firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
@@ -88,7 +88,45 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  
 ];
+
+function articleMaker(articleOb) {
+  const articleWrapper = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleParagrapheOne = document.createElement('p');
+  const articleParagrapheTwo = document.createElement('p');
+  const articleParagrapheThree = document.createElement('p');
+  const expandButton = document.createElement('p');
+
+  articleWrapper.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton')
+
+  articleWrapper.appendChild(articleTitle);
+  articleWrapper.appendChild(articleDate);
+  articleWrapper.appendChild(articleParagrapheOne);
+  articleWrapper.appendChild(articleParagrapheTwo);
+  articleWrapper.appendChild(articleParagrapheThree);
+  articleWrapper.appendChild(expandButton);
+
+  articleTitle.textContent = articleOb.title;
+  articleDate.textContent = articleOb.date;
+  articleParagrapheOne.textContent = articleOb.firstParagraph;
+  articleParagrapheTwo.textContent = articleOb.twoParagraph;
+  articleParagrapheThree.textContent = articleOb.threeParagraph;
+  expandButton.textContent = "+";
+
+  expandButton.addEventListener('click', () => {
+    articleWrapper.classList.toggle('article-open');
+  })
+  return articleWrapper
+}
+
+data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article));
+})
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
