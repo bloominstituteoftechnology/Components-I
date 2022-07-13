@@ -87,6 +87,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+  title: 'Added by Jordon',
+    date: 'today',
+    firstParagraph: `eta: 5 hours later`,
+
+    secondParagraph: `JS is fun!`,
+
+    thirdParagraph: `wooo wooo`
   }
 ];
 
@@ -94,7 +103,63 @@ const data = [
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
+*/
+function articleMaker(arrData, i){
+  let article = document.createElement('article');
+  let h2 = document.createElement('h2');
+  let p = document.createElement('p');
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+  let span = document.createElement('span');
 
+  p.classList.add('date');
+  span.classList.add('expandButton');
+  article.classList.add('article')
+
+  article.appendChild(h2);
+  article.appendChild(p);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(span);
+ 
+ // h2.textContent = arrData[i].title
+  // p.textContent = arrData[i].date;
+  // p1.textContent = arrData[i].firstParagraph;
+  // p2.textContent = arrData[i].secondParagraph;
+  // p3.textContent = arrData[i].thirdParagraph;
+  // span.textContent = '+';
+
+  let h2Text = arrData.title;
+  let p2Text = arrData.secondParagraph;
+  let pText = arrData.date;
+  let p1Text = arrData.firstParagraph;
+  let p3Text = arrData.thirdParagraph;
+
+  h2.textContent = h2Text;
+  p.textContent = pText;
+  p1.textContent = p1Text;
+  p2.textContent = p2Text;
+  p3.textContent = p3Text;
+  span.textContent = '+';
+ 
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  return article;
+}
+
+const articles = document.querySelector('.articles')
+
+  data.forEach((elem) => {
+    articles.appendChild(articleMaker(elem))
+  })
+
+
+
+/*
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
