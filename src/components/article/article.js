@@ -87,8 +87,72 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Professional Software Development in 2019',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+
+const articleMaker = (articleObj) =>{
+  const articleDiv = document.createElement('div');
+  const titleH2 = document.createElement('h2')
+  const date = document.createElement('p');
+  const firstPar = document.createElement('p');
+  const secondPar= document.createElement('p');
+  const thirdPar = document.createElement('p');
+  const spanElement = document.createElement('span');
+  
+  date.classList.add('date');
+  spanElement.classList.add('expandButton');
+  articleDiv.classList.add('article');
+  
+  articleDiv.appendChild(titleH2);
+  articleDiv.appendChild(firstPar);
+  articleDiv.appendChild(secondPar);
+  articleDiv.appendChild(thirdPar);
+  articleDiv.appendChild(date);
+  articleDiv.appendChild(spanElement);
+
+  titleH2.textContent = articleObj.title;
+  date.textContent = articleObj.date;
+  firstPar.textContent = articleObj.firstParagraph;
+  secondPar.textContent = articleObj.secondParagraph;
+  thirdPar.textContent = articleObj.thirdParagraph;
+  spanElement.textContent = "+";
+  
+
+
+
+
+  
+  
+  
+  spanElement.addEventListener('click',(event)=>{
+  articleDiv.classList.toggle('article-open');
+  });
+  console.log(articleDiv);
+  return articleDiv
+  }
+  
+  data.forEach(article => {
+    const art = document.querySelector('div.articles');
+    art.appendChild(articleMaker(article));
+  })
+  
+  
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
@@ -103,6 +167,8 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
+
+  
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
