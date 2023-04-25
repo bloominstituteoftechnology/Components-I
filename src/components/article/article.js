@@ -1,4 +1,4 @@
-import './article.less'
+import './article.less';
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
@@ -22,7 +22,7 @@ const data = [
     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
-        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`,
   },
   {
     title: 'Javascript and You, ES6',
@@ -42,7 +42,7 @@ const data = [
     thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights
         Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot
-        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
   },
   {
     title: 'React vs Angular vs Vue',
@@ -70,7 +70,7 @@ const data = [
 
     thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel
         Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James
-        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`,
   },
   {
     title: 'Professional Software Development in 2019',
@@ -86,8 +86,26 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+  },
+  {
+    title: 'Professional Software Development in 2020',
+    date: 'Jan 1st, 2020',
+    firstParagraph: `Pikachu ipsum dolor sit amet, Bulbasaur adipiscing elit. Charmander in euismod ipsum, Squirtle sed commodo augue. Meowth eu nisi semper, Jigglypuff et lobortis nibh. Eevee quam sed ex ut velit Scyther bibendum. Ut sollicitudin tortor metus, at venenatis tortor mollis at. Nunc commodo, turpis non vestibulum euismod, ipsum mauris suscipit nulla, ac eleifend est nibh vel purus. Aliquam nec velit vitae turpis molestie pharetra nec ac nunc. Pellentesque euismod, est sed convallis blandit, neque libero fringilla nisl, a lacinia dolor diam eget ex. Nam feugiat ultricies turpis in feugiat. Donec ac enim at ipsum consequat laoreet.`,
+
+    secondParagraph: `Pikachu ipsum dolor sit amet, Bulbasaur adipiscing elit. Charmander in euismod ipsum, Squirtle sed commodo augue. Meowth eu nisi semper, Jigglypuff et lobortis nibh. Eevee quam sed ex ut velit Scyther bibendum. Ut sollicitudin tortor metus, at venenatis tortor mollis at. Nunc commodo, turpis non vestibulum euismod, ipsum mauris suscipit nulla, ac eleifend est nibh vel purus. Aliquam nec velit vitae turpis molestie pharetra nec ac nunc. Pellentesque euismod, est sed convallis blandit, neque libero fringilla nisl, a lacinia dolor diam eget ex. Nam feugiat ultricies turpis in feugiat. Donec ac enim at ipsum consequat laoreet.`,
+
+    thirdParagraph: `Pikachu ipsum dolor sit amet, Bulbasaur adipiscing elit. Charmander in euismod ipsum, Squirtle sed commodo augue. Meowth eu nisi semper, Jigglypuff et lobortis nibh. Eevee quam sed ex ut velit Scyther bibendum. Ut sollicitudin tortor metus, at venenatis tortor mollis at. Nunc commodo, turpis non vestibulum euismod, ipsum mauris suscipit nulla, ac eleifend est nibh vel purus. Aliquam nec velit vitae turpis molestie pharetra nec ac nunc. Pellentesque euismod, est sed convallis blandit, neque libero fringilla nisl, a lacinia dolor diam eget ex. Nam feugiat ultricies turpis in feugiat. Donec ac enim at ipsum consequat laoreet.`,
+  },
+  {
+    title: 'Professional Software Development in 2021',
+    date: 'Jan 1st, 2021',
+    firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut sapien nec mauris tincidunt feugiat. Quisque id quam nec neque porttitor tincidunt. Nulla euismod mauris mauris, ac pretium arcu maximus a. Donec vel lacus in nulla tristique molestie. Proin vel velit libero. Vestibulum sed convallis enim, et dapibus ipsum. Curabitur in quam vel massa euismod laoreet. Sed sed ante quis nulla faucibus congue. Aliquam erat volutpat. Morbi lobortis tellus ut quam lobortis, sit amet bibendum nisi bibendum. Nunc luctus, est ac ultrices vulputate, ipsum odio rutrum enim, vel rhoncus magna leo sit amet metus. `,
+
+    secondParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut sapien nec mauris tincidunt feugiat. Quisque id quam nec neque porttitor tincidunt. Nulla euismod mauris mauris, ac pretium arcu maximus a. Donec vel lacus in nulla tristique molestie. Proin vel velit libero. Vestibulum sed convallis enim, et dapibus ipsum. Curabitur in quam vel massa euismod laoreet. Sed sed ante quis nulla faucibus congue. Aliquam erat volutpat. Morbi lobortis tellus ut quam lobortis, sit amet bibendum nisi bibendum. Nunc luctus, est ac ultrices vulputate, ipsum odio rutrum enim, vel rhoncus magna leo sit amet metus. `,
+
+    thirdParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut sapien nec mauris tincidunt feugiat. Quisque id quam nec neque porttitor tincidunt. Nulla euismod mauris mauris, ac pretium arcu maximus a. Donec vel lacus in nulla tristique molestie. Proin vel velit libero. Vestibulum sed convallis enim, et dapibus ipsum. Curabitur in quam vel massa euismod laoreet. Sed sed ante quis nulla faucibus congue. Aliquam erat volutpat. Morbi lobortis tellus ut quam lobortis, sit amet bibendum nisi bibendum. Nunc luctus, est ac ultrices vulputate, ipsum odio rutrum enim, vel rhoncus magna leo sit amet metus.`,
+  },
 ];
 
 /*
@@ -115,3 +133,38 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(articleObj) {
+  const articleDiv = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const pDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const span = document.createElement('span');
+
+  articleDiv.classList.add('article');
+  pDate.classList.add('date');
+  span.classList.add('expandButton');
+
+  h2.textContent = articleObj.title;
+  pDate.textContent = articleObj.date;
+  p1.textContent = articleObj.firstParagraph;
+  p2.textContent = articleObj.secondParagraph;
+  p3.textContent = articleObj.thirdParagraph;
+  span.textContent = '+';
+
+  articleDiv.append(h2, pDate, p1, p2, p3, span);
+
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open');
+  });
+
+  return articleDiv;
+}
+
+const articlesContainer = document.querySelector('.articles');
+data.forEach((articleObj) => {
+  const article = articleMaker(articleObj);
+  articlesContainer.append(article);
+});
